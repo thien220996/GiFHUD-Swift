@@ -169,7 +169,7 @@ public class GIFHUDImage: UIImage {
   // MARK: Display Link Helpers
 
   public func attachDisplayLink() {
-    displayLink.add(to: RunLoop.main, forMode: RunLoopMode.commonModes)
+    displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
   }
 
   // MARK: Frame Methods
@@ -188,7 +188,7 @@ public class GIFHUDImage: UIImage {
 
       if index < framesToPreload {
         let frameImageRef = CGImageSourceCreateImageAtIndex(self.imageSource!, Int(index), nil)
-        let frame = UIImage(cgImage: frameImageRef!, scale: 0.0, orientation: UIImageOrientation.up)
+        let frame = UIImage(cgImage: frameImageRef!, scale: 0.0, orientation: UIImage.Orientation.up)
         frames.append(frame)
       } else {
         frames.append(nil)
@@ -315,7 +315,7 @@ public class GIFHUD: UIView {
       }
 
       // Bring it front
-      self.window?.bringSubview(toFront: self)
+      self.window?.bringSubviewToFront(self)
 
       // Start animation
       if let _ = self.imageView?.animationImages {
